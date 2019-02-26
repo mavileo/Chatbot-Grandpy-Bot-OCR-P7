@@ -1,0 +1,49 @@
+h1, h3{
+    text-align: center;
+}
+
+.content {
+    display: flex;
+    border: 3px grey groove;
+    left: 25%;
+    width: 50%;
+    height: 70%;
+    top: 18%;
+    position: absolute;
+    margin: auto;
+    border: 3px grey groove;
+    flex-direction: column;
+}
+
+#chatbox {
+    display: flex;
+    background-color: #ccc;
+    height: 85%;
+    align-items: start;
+    flex-direction: row-reverse;
+}
+
+#mapid {
+    width: 430px;
+    height: 360px;
+    margin: auto;
+}
+
+#input {
+    background-color: #9FE7E3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15%;
+}
+
+#textarea {
+    width: 75%
+}
+
+footer {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    text-align: center;
+}
