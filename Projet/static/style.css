@@ -19,14 +19,13 @@ h1, h3{
     display: flex;
     background-color: #ccc;
     height: 85%;
-    align-items: start;
-    flex-direction: row-reverse;
+    flex-direction: column;
+    overflow: auto;
 }
 
-#mapid {
-    width: 430px;
-    height: 360px;
-    margin: auto;
+.map {
+    min-width: 430px;
+    min-height: 360px;
 }
 
 #input {

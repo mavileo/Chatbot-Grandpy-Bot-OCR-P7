@@ -21,13 +21,8 @@ def request(string):
     """Give the display name and the graphical coordonates"""
     reponse = requests.get('https://eu1.locationiq.com/v1/search.php?key=b9775ca6dbe5cb&q=' + string + '&format=json')
     data = reponse.json()
-    count = 0
-    for result in data:
-        if count == 0:
-            name = result['display_name']
-            lat = result['lat']
-            lon = result['lon']
+    name = data[0]['display_name']
+    lat = data[0]['lat']
+    lon = data[0]['lon']
     out = [name, lat, lon]
     return out
-
-print(parser("Bonjour GrandPy ! Est-ce que tu peux m'indiquer l'adresse d'OpenCLassRooms s'il te plaît ?"))
