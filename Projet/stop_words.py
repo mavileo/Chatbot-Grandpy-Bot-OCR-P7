@@ -114,4 +114,4 @@ stop_words = ['a', 'abord', 'absolument', 'adresse', 'afin', 'ah', 'ai', 'aie',
               'Salut', 'Bonjour', 'salut', 'boujour', 'GrandPy', 'Grandpy',
               'grandpy', 'Est-ce', 'est-ce', 'connais', 'donne', 'indiquer',
               'indique', 'donner', 'adresse', "l'adresse", '?', '!', 'stp',
-              "s'il", 'te', 'plait', 'plaît']
+              "s'il", 'te', 'plait', 'plaît', 'Tu']
