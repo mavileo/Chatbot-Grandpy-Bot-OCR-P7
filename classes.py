@@ -88,7 +88,6 @@ def get_story(tup, city):
             if pagename[0] == ' ':
                 pagename = pagename[1:]
             pagename = pagename.replace(' ', '_')
-            print(pagename, ': pagename0')
             reponse = requests.get('https://fr.wikipedia.org/w/api.php?action='\
                                     'query&pageids=' + str(pageid) + '&prop='\
                                     'extracts&exsentences=3%20&format=json&'\
@@ -108,7 +107,6 @@ def get_story(tup, city):
                         "endroit qui m'a vu en culottes courtes ? "
             more =  "<a href='https://fr.wikipedia.org/wiki/" + pagename + \
                     "'> [En savoir plus sur Wikipedia]</a>"
-            print(more)
             rep = beginning + story + more
             return rep
         except Exception as e:
@@ -141,6 +139,5 @@ def get_story(tup, city):
                 rep = beginning + story + more
                 return rep
             except Exception as e:
-                print(e)
                 return "GrandPy : Je ne me souviens d'aucune histoire sur "\
                        "cet endroit !"
