@@ -22,5 +22,4 @@ def map():
         result = (loc, rep_wiki)
         return json.dumps(result)
 
-if __name__== "__main__":
-    app.run()
+app.run()
