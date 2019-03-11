@@ -5,7 +5,7 @@ $('#send').click(function() {
     document.getElementById("chatbox").innerHTML += "<div>Vous : " + input + "<br></div>";
     document.getElementById("chatbox").innerHTML += '<img id="ajax-loading'+count2+'" src="http://loadinggif.com/generated-image?imageId=31&bgColor=%23ccc&fgColor=%23000000&transparentBg=0&download=0&random=0.00030365096131301783" />';
     $('#ajax-loading'+count2).show();
-    $.get('http://127.0.0.1:5000/map?value='+input, function(reponse) {
+    $.get('map?value='+input, function(reponse) {
         if (reponse == 'GrandPy : Je ne vois pas de quel endroit tu parles') {
             $('#ajax-loading'+count2).hide();
             document.getElementById("chatbox").innerHTML += "<div>" + reponse + "<br></div>";

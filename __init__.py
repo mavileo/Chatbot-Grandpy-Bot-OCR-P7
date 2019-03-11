@@ -4,10 +4,9 @@ import classes
 app = Flask(__name__)
 
 
-@app.route('/app')
+@app.route('/')
 def chat():
-    with open("/home/intmax/Documents/OpenClassrooms/Projet7/Projet/templates/"\
-              "index.html", 'r') as file:  
+    with open("templates/index.html", 'r') as file:  
         data = file.read()
     return data
 
