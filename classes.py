@@ -55,10 +55,8 @@ def request_map(string):
         if city[0] == ' ':
             city = city[1:]
         out = [name, lat, lon, to_search, city]
-        print(out)
         return out
     except:
-        print('non find')
         return None
 
 

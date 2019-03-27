@@ -20,3 +20,4 @@ def map():
         rep_wiki = classes.get_story(classes.get_pageid(loc[3]), loc[4])
         result = (loc, rep_wiki)
         return json.dumps(result)
+app.run()
