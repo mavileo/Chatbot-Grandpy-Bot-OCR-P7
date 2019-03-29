@@ -2,6 +2,69 @@
 
 import requests
 import classes
+"""This file contains tests"""
+
+import requests
+import classes
+
+import urllib.request
+
+from io import BytesIO
+import json
+
+def test_http_return1(monkeypatch):
+    results = ['OpenClassRooms, 7, Cité Paradis, Porte-St-Denis, 10th Arrondissement, Paris, Ile-de-France, Metropolitan France, 75010, France', '48.8747786', '2.3504885', 'Cité Paradis', 'Paris']
+
+    def mockreturn(request):
+        return BytesIO(json.dumps(results).encode())
+
+    monkeypatch.setattr(urllib.request, 'urlopen', mockreturn)
+    assert classes.request_map('OpenClassrooms') == results
+
+def test_http_return2(monkeypatch):
+    results = ['Grand Palais, Avenue du Général Eisenhower, Champs-Élysées, 8th Arrondissement of Paris, Paris, Ile-de-France, Metropolitan France, 75008, France', '48.86616135', '2.31222295966943', 'Avenue du Général Eisenhower', 'Paris']
+
+    def mockreturn(request):
+        return BytesIO(json.dumps(results).encode())
+
+    monkeypatch.setattr(urllib.request, 'urlopen', mockreturn)
+    assert classes.request_map('grand palais') == results
+
+def test_http_return3(monkeypatch):
+    results = (5653202, 'Cité Paradis')
+
+    def mockreturn(request):
+        return BytesIO(json.dumps(results).encode())
+
+    monkeypatch.setattr(urllib.request, 'urlopen', mockreturn)
+    assert classes.get_pageid('Cité Paradis') == results
+
+def test_http_return4(monkeypatch):
+    results = (5423267, 'Rue Gluck')
+
+    def mockreturn(request):
+        return BytesIO(json.dumps(results).encode())
+
+    monkeypatch.setattr(urllib.request, 'urlopen', mockreturn)
+    assert classes.get_pageid('Rue Gluck') == results
+
+def test_http_return5(monkeypatch):
+    results = ("GrandPy : Mais t'ai-je déjà raconté l'histoire de cet endroit qui m'a vu en culottes courtes ? La cité Paradis est une voie publique située dans le 10e arrondissement de Paris. Elle est en forme de té, une branche débouche au 43, rue de Paradis, la deuxième au 57, rue d'Hauteville et la troisième en impasse.<a href='https://fr.wikipedia.org/wiki/OpenClassrooms'> [En savoir plus sur Wikipedia]</a>")
+
+    def mockreturn(request):
+        return BytesIO(json.dumps(results).encode())
+
+    monkeypatch.setattr(urllib.request, 'urlopen', mockreturn)
+    assert classes.get_story((5653202, 'OpenClassrooms'), 'Paris') == results
+
+def test_http_return6(monkeypatch):
+    results = ("GrandPy : Mais t'ai-je déjà raconté l'histoire de cet endroit qui m'a vu en culottes courtes ? La rue Gluck est une voie publique située dans le 9e arrondissement de Paris. Elle débute  place Jacques-Rouché et se termine place Diaghilev.<a href='https://fr.wikipedia.org/wiki/Rue_Gluck'> [En savoir plus sur Wikipedia]</a>")
+
+    def mockreturn(request):
+        return BytesIO(json.dumps(results).encode())
+
+    monkeypatch.setattr(urllib.request, 'urlopen', mockreturn)
+    assert classes.get_story((5423267, 'Rue Gluck'), 'Paris') == results
 
 def test_parser():
     """Test the parser function"""
