@@ -91,7 +91,6 @@ def get_story(tup, city):
                                     'extracts&exsentences=3%20&format=json&'\
                                     'explaintext')
             data = reponse.json()
-            print(data)
             text = data['query']['pages'][str(pageid)]['extract']
             if 'Situation et accès ==\n' in text:
                 text = text.split('Situation et accès ==\n')
@@ -108,5 +107,48 @@ def get_story(tup, city):
                     "'> [En savoir plus sur Wikipedia]</a>"
             rep = beginning + story + more
             return rep
-        except:
-            pass
+        except Exception as e:
+            return None
+
+def get_story2(tup, city):
+    pageid = tup[0]
+    pagename = tup[1]
+    if pagename[0] == ' ':
+        pagename = pagename[1:]
+    pagename = pagename + " (" + city + ")"
+    rep = get_pageid(pagename)
+    pageid = rep[0]
+    pagename = rep[1]
+    try:
+        reponse = requests.get('https://fr.wikipedia.org/w/api.php?action='\
+                                'query&pageids=' + str(pageid) + '&prop='\
+                                'extracts&exsentences=3%20&format=json&'\
+                                'explaintext')
+        data = reponse.json()
+        print(data)
+        text = data['query']['pages'][str(pageid)]['extract']
+        if 'Situation et accès ==\n' in text:
+            text = text.split('Situation et accès ==\n')
+            story = text[1]
+        else:
+            text = text.split('.')
+            story = text[0] + text[1]
+        if '==' in story:
+            story = story.split('==')[0]
+        pagename = pagename.replace("'", "%27")
+        beginning = "GrandPy : Mais t'ai-je déjà raconté l'histoire de cet "\
+        "endroit qui m'a vu en culottes courtes ? "
+        more =  "<a href='https://fr.wikipedia.org/wiki/" + pagename + \
+                "'> [En savoir plus sur Wikipedia]</a>"
+        rep = beginning + story + more
+        return rep
+    except Exception as e:
+        return "GrandPy : Je ne me souviens d'aucune histoire sur "\
+               "cet endroit !"
+
+def story(tup, city):
+    if get_story(tup, city) != None:
+        return get_story(tup, city)
+    else:
+        return get_story2(tup, city)
+
