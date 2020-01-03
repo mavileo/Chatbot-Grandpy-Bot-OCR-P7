@@ -1,4 +1,4 @@
-# Project 7 - Create GrandPy Bot, the granddaddy-robot  🤖 👴
+# Create GrandPy Bot, the granddaddy-robot  🤖 👴
 
 Chatbot giving information about places
 
