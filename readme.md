@@ -28,4 +28,4 @@ You can ask a question in french to the chatbot about a place like "Tu sais où 
 
 ## How it works
 
-When you ask the chatbot a question, it will query the OpenStreetMap Rest API to retrieve the exact name of the place as well as these coordinates, with that we get the map of this place thanks to Mapbox, then we query the API from Wikipedia to retrieve the summary of this place. The requests are made in Javascript using jQuery.
+When you ask the chatbot a question, it will query the OpenStreetMap Rest API to retrieve the exact name of the place as well as these coordinates, with that we get the map of this place thanks to Mapbox, then we query the API from Wikipedia to retrieve the summary of this place. The requests are made in Javascript using jQuery. The backend of the site uses the Python Flask framework.
